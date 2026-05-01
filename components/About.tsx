@@ -1,12 +1,16 @@
+import { PhotoFrame } from "./PhotoFrame";
+
 export function About() {
   return (
     <section className="section" id="about" style={{ paddingBottom: 100 }}>
       <div className="container">
         <div className="about-split">
-          <div className="about-img photo-frame">
-            <div className="photo-ph">Portrait · Ted Hall</div>
-            <img src="/images/portrait-ted.jpg" alt="Ted Hall on a Tedelec job site" />
-          </div>
+          <PhotoFrame
+            src="/images/portrait-ted.jpg"
+            alt="Ted Hall on a Tedelec job site"
+            placeholder="Portrait · Ted Hall"
+            className="about-img"
+          />
           <div className="about-text">
             <div className="num-tag">/ 04 — About</div>
             <h2>Meet Ted.</h2>
