@@ -1,6 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import { Archivo, Inter } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "800", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.seo.siteUrl),
@@ -34,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1B1F23",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
 };
@@ -62,8 +77,8 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU">
-      <body className="min-h-screen bg-paper text-ink antialiased">
+    <html lang="en-AU" className={`${archivo.variable} ${inter.variable}`}>
+      <body className="bg-white text-ink antialiased">
         {children}
         <script
           type="application/ld+json"
