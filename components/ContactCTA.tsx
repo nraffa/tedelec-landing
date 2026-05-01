@@ -1,31 +1,88 @@
 import { site } from "@/lib/site";
+import { Icon } from "./Icon";
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="bg-spark">
-      <div className="mx-auto grid max-w-shell items-center gap-8 px-5 py-16 sm:grid-cols-[1.4fr_1fr] sm:px-8 sm:py-20">
-        <div>
-          <h2 className="font-display text-3xl leading-tight tracking-tighter2 text-ink sm:text-4xl">
-            Need an electrician? Call Ted.
-          </h2>
-          <p className="mt-4 max-w-prose text-ink/80">
-            Quotes are free. Emergencies answered any hour. Happy to chat through a job before
-            we book in — no pressure.
-          </p>
+    <section className="section" id="contact" style={{ borderBottom: "none" }}>
+      <div className="container">
+        <div className="head">
+          <div>
+            <div className="num-tag">/ 08 — Get in touch</div>
+            <h2>
+              Ready when
+              <br />
+              you are.
+            </h2>
+          </div>
+          <div className="lead">Call for emergencies. Email for quotes. Either way — fast response.</div>
         </div>
-        <div className="flex flex-col gap-3 sm:items-end">
-          <a
-            href={`tel:${site.contact.phoneIntl}`}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-4 text-base font-semibold text-paper shadow-sm transition hover:bg-ink-soft"
-          >
-            Call {site.contact.phone}
-          </a>
-          <a
-            href={`mailto:${site.contact.email}?subject=Electrical%20enquiry`}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 bg-paper px-6 py-4 text-base font-semibold text-ink transition hover:border-ink/40"
-          >
-            {site.contact.email}
-          </a>
+        <div className="contact-grid">
+          <div className="contact-info">
+            <h2>Speak to Ted directly.</h2>
+            <p>
+              No call centres, no gatekeepers. The number on this page rings the man with the tools.
+            </p>
+            <a className="ci-row" href={`tel:${site.contact.phoneIntl}`}>
+              <Icon name="phone" size={20} />
+              <div>
+                <div className="lbl">Call</div>
+                <div className="val">{site.contact.phone}</div>
+              </div>
+            </a>
+            <a className="ci-row" href={`mailto:${site.contact.email}?subject=Electrical%20enquiry`}>
+              <Icon name="mail" size={20} />
+              <div>
+                <div className="lbl">Email</div>
+                <div className="val">{site.contact.email}</div>
+              </div>
+            </a>
+            <a
+              className="ci-row"
+              href={site.contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="instagram" size={20} />
+              <div>
+                <div className="lbl">Instagram</div>
+                <div className="val">{site.contact.instagramHandle}</div>
+              </div>
+            </a>
+          </div>
+          <div className="contact-card">
+            <h3>Hours & details.</h3>
+            <div className="ci-row">
+              <Icon name="clock" size={20} />
+              <div>
+                <div className="lbl">Standard hours</div>
+                <div className="val">{site.hours.standard}</div>
+              </div>
+            </div>
+            <div className="ci-row">
+              <Icon name="bolt" size={20} />
+              <div>
+                <div className="lbl">After hours</div>
+                <div className="val">{site.hours.emergency}</div>
+              </div>
+            </div>
+            <div className="ci-row">
+              <Icon name="shield" size={20} />
+              <div>
+                <div className="lbl">Licensed & insured</div>
+                <div className="val">{site.brand.license}</div>
+              </div>
+            </div>
+            <div className="ci-row" style={{ borderBottom: "none" }}>
+              <Icon name="phone" size={20} />
+              <div>
+                <div className="lbl">Service area</div>
+                <div className="val">{site.brand.serviceArea}</div>
+              </div>
+            </div>
+            <a href={`tel:${site.contact.phoneIntl}`} className="btn-big">
+              <Icon name="phone" size={18} /> Call now
+            </a>
+          </div>
         </div>
       </div>
     </section>

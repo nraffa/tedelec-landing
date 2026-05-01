@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Söhne", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --accent: #2f6b3a;
+  --accent-ink: #0a0a0a;
+  --ink: #0a0a0a;
+  --ink-soft: #525050;
+  --bg: #ffffff;
+  --surface: #f4f4ee;
+  --line: #e6e5dc;
+  --card: #ffffff;
 }
 
 html {
@@ -14,19 +20,397 @@ html {
 }
 
 body {
-  background: theme("colors.paper.DEFAULT");
-  color: theme("colors.ink.DEFAULT");
-  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), "Inter", ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
 }
 
 ::selection {
-  background: theme("colors.spark.glow");
-  color: theme("colors.ink.DEFAULT");
+  background: var(--accent);
+  color: #fff;
 }
 
 @media (max-width: 640px) {
-  /* Reserve space for the sticky call bar on mobile so it never covers content */
-  main {
-    padding-bottom: 5rem;
-  }
+  main { padding-bottom: 5rem; }
+}
+
+/* ───────────────────────── Tedelec / Variation B ───────────────────────── */
+
+.tedelec-page {
+  font-size: 16px;
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100%;
+}
+.tedelec-page h1,
+.tedelec-page h2,
+.tedelec-page h3,
+.tedelec-page h4 {
+  font-family: var(--font-display), "Archivo", "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.tedelec-page a { color: inherit; text-decoration: none; }
+.tedelec-page button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+.tedelec-page img { display: block; max-width: 100%; }
+
+.tedelec-page .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+
+/* Logo placement helper */
+.logo-circle {
+  border-radius: 999px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.logo-circle img,
+.logo-circle svg { width: 100%; height: 100%; object-fit: cover; }
+
+/* Photo placeholder — used as a fallback layer behind every image */
+.photo-ph {
+  position: relative;
+  background:
+    linear-gradient(135deg, color-mix(in oklch, var(--accent) 15%, var(--surface)) 0%, var(--surface) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in oklch, var(--ink) 50%, transparent);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.photo-ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, color-mix(in oklch, var(--accent) 10%, transparent) 25%, transparent 25%),
+    linear-gradient(-45deg, color-mix(in oklch, var(--accent) 10%, transparent) 25%, transparent 25%);
+  background-size: 24px 24px;
+  opacity: 0.4;
+}
+.photo-ph > * { position: relative; z-index: 1; }
+
+.photo-frame { position: relative; overflow: hidden; }
+.photo-frame > .photo-ph { position: absolute; inset: 0; }
+.photo-frame > img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top bar */
+.tedelec-page .topbar {
+  background: var(--ink); color: var(--bg);
+  padding: 10px 0; font-size: 12px; letter-spacing: 0.08em;
+}
+.tedelec-page .topbar-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.tedelec-page .topbar a { display: inline-flex; align-items: center; gap: 8px; }
+.tedelec-page .topbar .marquee {
+  display: flex; gap: 32px; align-items: center;
+  color: color-mix(in oklch, var(--bg) 70%, transparent);
+}
+.tedelec-page .topbar .pulse { width: 8px; height: 8px; border-radius: 999px; background: var(--accent); animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%,100% {opacity: 1;} 50% {opacity: 0.3;} }
+
+/* Nav */
+.tedelec-page .nav {
+  padding: 22px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid var(--ink);
+}
+.tedelec-page .nav-brand { display: flex; align-items: center; gap: 14px; }
+.tedelec-page .nav-brand .logo-circle { width: 52px; height: 52px; border: 2px solid var(--ink); }
+.tedelec-page .brand-name { font-family: var(--font-display), "Archivo", sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; }
+.tedelec-page .nav-links { display: flex; gap: 28px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.tedelec-page .nav-cta {
+  background: var(--accent); color: var(--accent-ink);
+  padding: 14px 22px; font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: 0.06em;
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .12s, box-shadow .12s;
+}
+.tedelec-page .nav-cta:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+
+/* Hero */
+.tedelec-page .hero { padding: 60px 0 0; position: relative; overflow: hidden; }
+.tedelec-page .hero h1 {
+  font-size: clamp(72px, 12vw, 200px);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+}
+.tedelec-page .hero h1 .out { -webkit-text-stroke: 2px var(--ink); color: transparent; font-style: italic; }
+.tedelec-page .hero h1 .accent { color: var(--accent); }
+.tedelec-page .hero-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: end; padding: 60px 0 40px; border-bottom: 2px solid var(--ink); }
+.tedelec-page .hero-meta { display: flex; flex-direction: column; gap: 24px; }
+.tedelec-page .hero-sub { font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 380px; margin: 0; }
+.tedelec-page .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.tedelec-page .hero-photo { aspect-ratio: 4/3; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--accent); }
+
+.tedelec-page .btn-big {
+  background: var(--ink); color: var(--bg);
+  padding: 22px 28px; font-weight: 800; text-transform: uppercase; font-size: 16px; letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 14px;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--accent);
+  transition: transform .12s, box-shadow .12s;
+}
+.tedelec-page .btn-big:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--accent); }
+.tedelec-page .btn-big.alt { background: var(--bg); color: var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.tedelec-page .btn-big.alt:hover { box-shadow: 8px 8px 0 var(--ink); }
+
+/* Stat strip */
+.tedelec-page .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--ink); }
+.tedelec-page .stat { padding: 36px 28px; border-right: 2px solid var(--ink); display: flex; flex-direction: column; gap: 8px; }
+.tedelec-page .stat:last-child { border-right: none; }
+.tedelec-page .stat .num { font-family: var(--font-display), "Archivo", sans-serif; font-size: 56px; font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+.tedelec-page .stat .lbl { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
+.tedelec-page .stat.accent { background: var(--accent); color: var(--accent-ink); }
+.tedelec-page .stat.accent .lbl { color: var(--accent-ink); opacity: 0.7; }
+
+/* Marquee */
+.tedelec-page .marquee-band {
+  background: var(--ink); color: var(--bg);
+  padding: 18px 0; overflow: hidden; white-space: nowrap;
+  border-bottom: 2px solid var(--ink);
+}
+.tedelec-page .marquee-track { display: inline-flex; gap: 48px; animation: scroll 28s linear infinite; }
+.tedelec-page .marquee-track span { font-family: var(--font-display), "Archivo", sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 48px; }
+.tedelec-page .marquee-track .dot { width: 12px; height: 12px; border-radius: 999px; background: var(--accent); display: inline-block; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Section shell */
+.tedelec-page .section { padding: 100px 0; border-bottom: 2px solid var(--ink); }
+.tedelec-page .section .head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 60px; flex-wrap: wrap; }
+.tedelec-page .section .head h2 { font-size: clamp(48px, 7vw, 96px); line-height: 0.92; }
+.tedelec-page .section .head .lead { max-width: 380px; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+.tedelec-page .section .num-tag { font-family: var(--font-display), "Archivo", sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase; }
+
+/* Services */
+.tedelec-page .svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 2px solid var(--ink); }
+.tedelec-page .svc {
+  padding: 32px 26px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  display: flex; flex-direction: column; gap: 14px; min-height: 240px;
+  background: var(--card);
+  transition: background .15s, color .15s;
+}
+.tedelec-page .svc:hover { background: var(--accent); color: var(--accent-ink); }
+.tedelec-page .svc:hover p { color: var(--accent-ink); }
+.tedelec-page .svc:nth-child(4n) { border-right: none; }
+.tedelec-page .svc:nth-last-child(-n+4) { border-bottom: none; }
+.tedelec-page .svc h3 { font-size: 20px; }
+.tedelec-page .svc p { color: var(--ink-soft); font-size: 14px; line-height: 1.5; margin: 0; }
+.tedelec-page .svc .num { font-family: var(--font-display), "Archivo", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.5; }
+
+/* Process */
+.tedelec-page .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tedelec-page .step { background: var(--surface); border: 2px solid var(--ink); padding: 36px 32px; box-shadow: 6px 6px 0 var(--ink); }
+.tedelec-page .step .n { font-family: var(--font-display), "Archivo", sans-serif; font-size: 80px; font-weight: 900; line-height: 1; color: var(--accent); letter-spacing: -0.05em; }
+.tedelec-page .step h3 { font-size: 24px; margin-top: 18px; }
+.tedelec-page .step p { color: var(--ink-soft); font-size: 15px; line-height: 1.55; margin-top: 12px; }
+
+/* Recent jobs / Work grid */
+.tedelec-page .jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(0, 320px);
+  gap: 0;
+  border: 2px solid var(--ink);
+}
+.tedelec-page .job {
+  position: relative;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.tedelec-page .job.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.tedelec-page .job:nth-child(3n) { border-right: none; }
+.tedelec-page .job-photo {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  border-bottom: 2px solid var(--ink);
+}
+.tedelec-page .job-meta {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--card);
+}
+.tedelec-page .job-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tedelec-page .job h3 {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.tedelec-page .job.featured h3 { font-size: 22px; }
+.tedelec-page .job .arrow { transition: transform .15s; color: var(--accent); }
+.tedelec-page .job:hover .arrow { transform: translateX(6px); }
+.tedelec-page .job-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tedelec-page .job-tags span {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  border: 1px solid var(--line); padding: 3px 8px; color: var(--ink-soft);
+}
+.tedelec-page .jobs-cta { display: flex; justify-content: center; margin-top: 48px; }
+
+/* About split */
+.tedelec-page .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--ink); }
+.tedelec-page .about-img { aspect-ratio: 1/1; border-right: 2px solid var(--ink); position: relative; }
+.tedelec-page .about-text { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+.tedelec-page .about-text .num-tag { color: var(--accent); }
+.tedelec-page .about-text h2 { font-size: clamp(40px, 4.5vw, 64px); line-height: 0.95; }
+.tedelec-page .about-text p { color: var(--ink-soft); font-size: 16px; line-height: 1.65; margin: 18px 0 0; }
+.tedelec-page .about-text .signoff { margin-top: 32px; display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; }
+.tedelec-page .about-text .signoff .bar { width: 40px; height: 2px; background: var(--accent); }
+
+/* Coverage */
+.tedelec-page .section.coverage-band { background: var(--ink); color: var(--bg); }
+.tedelec-page .coverage-band h2 { color: var(--bg); }
+.tedelec-page .coverage-band .lead { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+.tedelec-page .coverage-band .num-tag { color: var(--accent); }
+.tedelec-page .suburb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.tedelec-page .chip { border: 2px solid var(--bg); padding: 12px 18px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; transition: background .12s, color .12s, border-color .12s; }
+.tedelec-page .chip:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+/* Testimonials */
+.tedelec-page .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tedelec-page .testi {
+  background: var(--card); border: 2px solid var(--ink); padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.tedelec-page .testi .stars { color: var(--accent); display: flex; gap: 2px; }
+.tedelec-page .testi q { font-size: 19px; line-height: 1.45; font-weight: 500; quotes: "\201C" "\201D"; display: block; }
+.tedelec-page .testi q::before { content: open-quote; }
+.tedelec-page .testi q::after { content: close-quote; }
+.tedelec-page .testi .who { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* FAQ */
+.tedelec-page .faq-list { display: flex; flex-direction: column; gap: 16px; max-width: 880px; }
+.tedelec-page .faq-item {
+  border: 2px solid var(--ink);
+  background: var(--card);
+  transition: box-shadow .12s, transform .12s;
+}
+.tedelec-page .faq-item[open] { box-shadow: 6px 6px 0 var(--accent); }
+.tedelec-page .faq-item summary {
+  list-style: none;
+  padding: 22px 26px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  cursor: pointer;
+  font-family: var(--font-display), "Archivo", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: 17px;
+}
+.tedelec-page .faq-item summary::-webkit-details-marker { display: none; }
+.tedelec-page .faq-item summary .plus {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 2px solid var(--ink);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  transition: background .12s, color .12s, transform .15s;
+}
+.tedelec-page .faq-item[open] summary .plus { background: var(--accent); color: var(--accent-ink); transform: rotate(45deg); }
+.tedelec-page .faq-item .faq-body {
+  padding: 0 26px 24px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Contact */
+.tedelec-page .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--ink); }
+.tedelec-page .contact-info { padding: 56px 48px; background: var(--accent); color: var(--accent-ink); border-right: 2px solid var(--ink); }
+.tedelec-page .contact-info h2 { font-size: clamp(40px, 4vw, 56px); line-height: 0.95; }
+.tedelec-page .contact-info p { font-size: 16px; line-height: 1.5; margin: 18px 0 36px; max-width: 360px; opacity: 0.85; }
+.tedelec-page .ci-row { padding: 18px 0; border-top: 2px solid var(--ink); display: flex; align-items: center; gap: 16px; font-weight: 700; }
+.tedelec-page .ci-row:last-child { border-bottom: 2px solid var(--ink); }
+.tedelec-page .ci-row .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+.tedelec-page .ci-row .val { font-size: 18px; }
+.tedelec-page .contact-card { padding: 56px 48px; background: var(--card); display: flex; flex-direction: column; gap: 4px; }
+.tedelec-page .contact-card h3 { font-size: 28px; margin-bottom: 10px; }
+.tedelec-page .contact-card .ci-row { color: var(--ink); }
+.tedelec-page .contact-card .ci-row .lbl { color: var(--ink-soft); opacity: 1; }
+.tedelec-page .contact-card .btn-big { margin-top: 28px; align-self: flex-start; }
+
+/* Footer */
+.tedelec-page .footer { background: var(--ink); color: var(--bg); padding: 48px 0; }
+.tedelec-page .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.tedelec-page .footer-brand { display: flex; align-items: center; gap: 14px; font-family: var(--font-display), "Archivo", sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -0.03em; }
+.tedelec-page .footer-brand .logo-circle { width: 40px; height: 40px; }
+.tedelec-page .footer-meta { font-size: 12px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Sticky call bar (mobile) */
+.tedelec-page .sticky-bar {
+  display: none;
+  position: fixed; left: 0; right: 0; bottom: 0;
+  background: var(--ink); color: var(--bg);
+  padding: 12px 16px;
+  z-index: 50;
+  border-top: 2px solid var(--accent);
+  align-items: center; justify-content: space-between; gap: 12px;
+}
+.tedelec-page .sticky-bar .label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+.tedelec-page .sticky-bar .num { font-family: var(--font-display), "Archivo", sans-serif; font-size: 18px; font-weight: 800; }
+.tedelec-page .sticky-bar a {
+  background: var(--accent); color: var(--accent-ink);
+  padding: 12px 18px; font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  border: 2px solid var(--bg);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .tedelec-page .hero-row,
+  .tedelec-page .about-split,
+  .tedelec-page .contact-grid { grid-template-columns: 1fr; }
+  .tedelec-page .about-img { border-right: none; border-bottom: 2px solid var(--ink); }
+  .tedelec-page .contact-info { border-right: none; border-bottom: 2px solid var(--ink); }
+  .tedelec-page .svc-grid,
+  .tedelec-page .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .tedelec-page .svc:nth-child(2n) { border-right: none; }
+  .tedelec-page .svc { border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .tedelec-page .stat { border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .tedelec-page .stat:nth-child(2n) { border-right: none; }
+  .tedelec-page .process-grid,
+  .tedelec-page .testi-grid { grid-template-columns: 1fr; }
+  .tedelec-page .jobs-grid { grid-template-columns: 1fr; grid-auto-rows: 280px; }
+  .tedelec-page .job.featured { grid-column: auto; grid-row: auto; }
+  .tedelec-page .job { border-right: none; }
+  .tedelec-page .nav-links { display: none; }
+  .tedelec-page .container { padding: 0 20px; }
+}
+
+@media (max-width: 640px) {
+  .tedelec-page .sticky-bar { display: flex; }
+  .tedelec-page .topbar .marquee { font-size: 11px; }
+  .tedelec-page .topbar-row > div:last-child a:first-child { display: inline-flex; }
+  .tedelec-page .topbar-row > div:last-child a:last-child { display: none; }
 }

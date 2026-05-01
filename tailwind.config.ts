@@ -6,31 +6,22 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#1B1F23",
-          soft: "#3A3F44",
-          muted: "#6B7178",
+          DEFAULT: "#0a0a0a",
+          soft: "#525050",
         },
-        paper: {
-          DEFAULT: "#FAFAF7",
-          warm: "#F2F1EC",
+        accent: {
+          DEFAULT: "#2f6b3a",
+          ink: "#0a0a0a",
         },
-        spark: {
-          DEFAULT: "#7FBA42",
-          deep: "#5E9530",
-          glow: "#E8F3D7",
-        },
+        surface: "#f4f4ee",
+        line: "#e6e5dc",
       },
       fontFamily: {
-        display: ["var(--font-display)", "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Archivo", "Helvetica Neue", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {
-        prose: "68ch",
-        shell: "1180px",
-      },
-      letterSpacing: {
-        tightish: "-0.015em",
-        tighter2: "-0.03em",
+        shell: "1320px",
       },
     },
   },
