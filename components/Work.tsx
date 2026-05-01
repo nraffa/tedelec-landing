@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { Icon } from "./Icon";
+import { PhotoFrame } from "./PhotoFrame";
 
 export function Work() {
   return (
@@ -21,10 +22,12 @@ export function Work() {
               className={"job" + ("featured" in w && w.featured ? " featured" : "")}
               key={w.slug}
             >
-              <div className="job-photo photo-frame">
-                <div className="photo-ph">{w.title}</div>
-                <img src={w.image} alt={w.caption} loading="lazy" />
-              </div>
+              <PhotoFrame
+                src={w.image}
+                alt={w.caption}
+                placeholder={w.title}
+                className="job-photo"
+              />
               <div className="job-meta">
                 <div className="job-meta-top">
                   <h3>{w.title}</h3>

@@ -146,20 +146,30 @@ body {
 .tedelec-page .nav-cta:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
 
 /* Hero */
-.tedelec-page .hero { padding: 60px 0 0; position: relative; overflow: hidden; }
+.tedelec-page .hero { padding: 80px 0 100px; position: relative; overflow: hidden; border-bottom: 2px solid var(--ink); }
+.tedelec-page .hero-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.tedelec-page .hero-content { display: flex; flex-direction: column; gap: 36px; min-width: 0; }
 .tedelec-page .hero h1 {
-  font-size: clamp(72px, 12vw, 200px);
+  font-size: clamp(56px, 8.5vw, 144px);
   line-height: 0.86;
   letter-spacing: -0.05em;
   font-weight: 900;
 }
 .tedelec-page .hero h1 .out { -webkit-text-stroke: 2px var(--ink); color: transparent; font-style: italic; }
 .tedelec-page .hero h1 .accent { color: var(--accent); }
-.tedelec-page .hero-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: end; padding: 60px 0 40px; border-bottom: 2px solid var(--ink); }
-.tedelec-page .hero-meta { display: flex; flex-direction: column; gap: 24px; }
-.tedelec-page .hero-sub { font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 380px; margin: 0; }
+.tedelec-page .hero-sub { font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 460px; margin: 0; }
 .tedelec-page .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
-.tedelec-page .hero-photo { aspect-ratio: 4/3; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--accent); }
+.tedelec-page .hero-photo {
+  aspect-ratio: 4/5;
+  border: 2px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--accent);
+  width: 100%;
+}
 
 .tedelec-page .btn-big {
   background: var(--ink); color: var(--bg);
@@ -390,7 +400,9 @@ body {
 @media (max-width: 1100px) {
   .tedelec-page .hero-row,
   .tedelec-page .about-split,
-  .tedelec-page .contact-grid { grid-template-columns: 1fr; }
+  .tedelec-page .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .tedelec-page .hero { padding: 60px 0 80px; }
+  .tedelec-page .hero h1 { font-size: clamp(56px, 14vw, 96px); }
   .tedelec-page .about-img { border-right: none; border-bottom: 2px solid var(--ink); }
   .tedelec-page .contact-info { border-right: none; border-bottom: 2px solid var(--ink); }
   .tedelec-page .svc-grid,
