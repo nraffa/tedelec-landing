@@ -301,7 +301,7 @@ body {
 /* Coverage */
 .tedelec-page .section.coverage-band { background: var(--ink); color: var(--bg); }
 .tedelec-page .coverage-band h2 { color: var(--bg); }
-.tedelec-page .coverage-band .lead { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+.tedelec-page .coverage-band .lead { color: color-mix(in oklch, var(--bg) 70%, transparent); max-width: none; white-space: nowrap; }
 .tedelec-page .coverage-band .num-tag { color: var(--accent); }
 .tedelec-page .suburb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .tedelec-page .chip { border: 2px solid var(--bg); padding: 12px 18px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; transition: background .12s, color .12s, border-color .12s; }
@@ -418,6 +418,10 @@ body {
   .tedelec-page .job { border-right: none; }
   .tedelec-page .nav-links { display: none; }
   .tedelec-page .container { padding: 0 20px; }
+}
+
+@media (max-width: 900px) {
+  .tedelec-page .coverage-band .lead { white-space: normal; }
 }
 
 @media (max-width: 640px) {
