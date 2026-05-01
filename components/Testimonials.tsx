@@ -34,6 +34,26 @@ export function Testimonials() {
             </div>
           ))}
         </div>
+        <div className="testi-acc-list">
+          {site.testimonials.map((t) => (
+            <details className="testi-acc" key={t.name}>
+              <summary>
+                <span className="testi-acc-stars">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <Icon key={i} name="star" size={12} />
+                  ))}
+                </span>
+                <span className="testi-acc-who">
+                  {t.name}, {t.suburb}
+                </span>
+                <span className="testi-acc-chev" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <q className="testi-acc-quote">{t.quote}</q>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -24,6 +24,20 @@ export function Process() {
             </div>
           ))}
         </div>
+        <div className="process-acc-list">
+          {site.process.map((step) => (
+            <details className="step-acc" key={step.n}>
+              <summary>
+                <span className="step-acc-num">{step.n}</span>
+                <span className="step-acc-title">{step.title}</span>
+                <span className="step-acc-chev" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <p className="step-acc-blurb">{step.blurb}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );

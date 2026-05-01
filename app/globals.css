@@ -377,6 +377,11 @@ body {
 .tedelec-page .footer-brand .logo-circle { width: 40px; height: 40px; }
 .tedelec-page .footer-meta { font-size: 12px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
 
+/* Mobile-only accordions (Services, Process, Testimonials) */
+.tedelec-page .svc-acc-list,
+.tedelec-page .process-acc-list,
+.tedelec-page .testi-acc-list { display: none; }
+
 /* Sticky call bar (mobile) */
 .tedelec-page .sticky-bar {
   display: none;
@@ -429,4 +434,182 @@ body {
   .tedelec-page .topbar .marquee { font-size: 11px; }
   .tedelec-page .topbar-row > div:last-child a:first-child { display: inline-flex; }
   .tedelec-page .topbar-row > div:last-child a:last-child { display: none; }
+
+  /* Section spacing tighter on mobile */
+  .tedelec-page .section { padding: 64px 0; }
+  .tedelec-page .section .head { margin-bottom: 36px; gap: 20px; }
+
+  /* Services: hide grid, show accordion */
+  .tedelec-page .svc-grid { display: none; }
+  .tedelec-page .svc-acc-list { display: block; border: 2px solid var(--ink); background: var(--card); }
+  .tedelec-page .svc-acc { border-bottom: 2px solid var(--ink); }
+  .tedelec-page .svc-acc:last-child { border-bottom: none; }
+  .tedelec-page .svc-acc summary {
+    list-style: none;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .tedelec-page .svc-acc summary::-webkit-details-marker { display: none; }
+  .tedelec-page .svc-acc-num {
+    font-family: var(--font-display), "Archivo", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+  .tedelec-page .svc-acc-title {
+    flex: 1;
+    font-family: var(--font-display), "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .tedelec-page .svc-acc-chev {
+    width: 26px; height: 26px;
+    border: 2px solid var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    flex-shrink: 0;
+    transition: background .12s, color .12s, transform .15s;
+  }
+  .tedelec-page .svc-acc[open] .svc-acc-chev {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: rotate(45deg);
+  }
+  .tedelec-page .svc-acc-blurb {
+    padding: 0 18px 18px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Process: hide grid, show accordion */
+  .tedelec-page .process-grid { display: none; }
+  .tedelec-page .process-acc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tedelec-page .step-acc {
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .tedelec-page .step-acc summary {
+    list-style: none;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+  }
+  .tedelec-page .step-acc summary::-webkit-details-marker { display: none; }
+  .tedelec-page .step-acc-num {
+    font-family: var(--font-display), "Archivo", sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    flex-shrink: 0;
+  }
+  .tedelec-page .step-acc-title {
+    flex: 1;
+    font-family: var(--font-display), "Archivo", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .tedelec-page .step-acc-chev {
+    width: 26px; height: 26px;
+    border: 2px solid var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    flex-shrink: 0;
+    transition: background .12s, color .12s, transform .15s;
+  }
+  .tedelec-page .step-acc[open] .step-acc-chev {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: rotate(45deg);
+  }
+  .tedelec-page .step-acc-blurb {
+    padding: 0 18px 18px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Testimonials: hide grid, show accordion */
+  .tedelec-page .testi-grid { display: none; }
+  .tedelec-page .testi-acc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tedelec-page .testi-acc {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .tedelec-page .testi-acc summary {
+    list-style: none;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .tedelec-page .testi-acc summary::-webkit-details-marker { display: none; }
+  .tedelec-page .testi-acc-stars {
+    color: var(--accent);
+    display: inline-flex;
+    gap: 1px;
+    flex-shrink: 0;
+  }
+  .tedelec-page .testi-acc-who {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .tedelec-page .testi-acc-chev {
+    width: 26px; height: 26px;
+    border: 2px solid var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    flex-shrink: 0;
+    transition: background .12s, color .12s, transform .15s;
+  }
+  .tedelec-page .testi-acc[open] .testi-acc-chev {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: rotate(45deg);
+  }
+  .tedelec-page .testi-acc-quote {
+    display: block;
+    padding: 0 18px 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    quotes: "\201C" "\201D";
+  }
+  .tedelec-page .testi-acc-quote::before { content: open-quote; }
+  .tedelec-page .testi-acc-quote::after { content: close-quote; }
 }
