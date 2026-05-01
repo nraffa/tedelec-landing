@@ -32,6 +32,21 @@ export function Services() {
             </div>
           ))}
         </div>
+        <div className="svc-acc-list">
+          {site.services.map((s, i) => (
+            <details className="svc-acc" key={s.title}>
+              <summary>
+                <span className="svc-acc-num">/ {String(i + 1).padStart(2, "0")}</span>
+                <Icon name={s.icon as IconName} size={20} />
+                <span className="svc-acc-title">{s.title}</span>
+                <span className="svc-acc-chev" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <p className="svc-acc-blurb">{s.blurb}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );
